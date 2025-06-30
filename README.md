@@ -1,1 +1,2 @@
-# React-CourseAnsh
+# Домашнее задание № 1
+Работа с gitHub
