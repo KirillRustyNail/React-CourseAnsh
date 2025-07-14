@@ -1,0 +1,174 @@
+/* Общие стили */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.header, .footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Табы */
+.restaurant-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f5f5f5;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: #ddd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #007bff;
+  color: white;
+}
+
+/* Меню и отзывы */
+.restaurant-view {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.menu-section, .reviews-section {
+  margin-top: 30px;
+}
+
+.menu-items, .reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.item-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-counter button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  cursor: pointer;
+}
+
+
+.review-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.rating {
+  color: gold;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  gap: 15px;
+}
+
+.item-emoji {
+  font-size: 2rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.item-info {
+  flex: 1;
+}
+
+
+/* Ingredients styles */
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.ingredients-label {
+  font-weight: bold;
+}
+
+.ingredients-list {
+  display: inline;
+}
+
+.ingredient-item {
+  display: inline;
+}
+
+/* Counter styles */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.counter button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.counter button:disabled {
+  opacity: 0.5;
+}
+
+.counter-value {
+  min-width: 20px;
+  text-align: center;
+}
