@@ -1,6 +1,5 @@
 import {Ingredients} from '../Ingredients/Ingredients';
-
-import {Counter} from '../Counter/Counter';
+import {DishCounter} from '../Counter/DishCounter';
 import { FOOD_EMOJIS } from '../../constants/foodIcons';
 
 export const  MenuItem = ({ item }) => {
@@ -18,7 +17,7 @@ export const  MenuItem = ({ item }) => {
         <p>Price: ${item.price}</p>
         <Ingredients items={item.ingredients} />
       </div>
-      <Counter initial={0} min={0} max={5} />
+      <DishCounter initial={0} min={0} max={5} />
     </div>
   );
 }

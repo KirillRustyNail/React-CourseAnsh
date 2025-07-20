@@ -1,28 +1,25 @@
-import { useState } from 'react';
+import React from 'react';
 
-export const Counter = ({ initial = 0, min = 0, max = 5 }) => {
-  const [count, setCount] = useState(initial);
-
-  const increment = () => setCount(prev => Math.min(prev + 1, max));
-  const decrement = () => setCount(prev => Math.max(prev - 1, min));
-
+export const Counter = ({ value, onIncrement, onDecrement, min, max }) => {
   return (
     <div className="counter">
       <button 
-        onClick={decrement} 
-        disabled={count === min}
+        onClick={onDecrement} 
+        disabled={value === min}
         aria-label="Decrease"
       >
         -
       </button>
-      <span className="counter-value">{count}</span>
+
+      <span className="counter-value">{value}</span>
+
       <button 
-        onClick={increment} 
-        disabled={count === max}
+        onClick={onIncrement} 
+        disabled={value === max}
         aria-label="Increase"
       >
         +
       </button>
     </div>
   );
-}
+};
