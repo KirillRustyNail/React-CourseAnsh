@@ -1,6 +1,8 @@
 import React from 'react';
 import { Counter } from './Counter';
 
+const MIN_RATING = 1;
+const MAX_RATING = 5;
 
 const StarDisplay = ({ rating }) => {
   return (
@@ -24,12 +26,9 @@ const StarDisplay = ({ rating }) => {
 };
 
 export const ReviewCounter = ({ rating, onIncrement, onDecrement }) => {
-  const MIN_RATING = 1;
-  const MAX_RATING = 5;
-
   return (
     <div className="rating-controls" style={{ display: 'flex', alignItems: 'center' }}>
-        <Counter
+      <Counter
         value={rating}
         onIncrement={onIncrement}
         onDecrement={onDecrement}
@@ -38,6 +37,5 @@ export const ReviewCounter = ({ rating, onIncrement, onDecrement }) => {
       />
       <StarDisplay rating={rating}/>
     </div>
-      
   );
 };
