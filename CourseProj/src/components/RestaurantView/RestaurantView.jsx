@@ -1,5 +1,6 @@
 import {MenuItem} from '../MenuItem/MenuItem';
 import {ReviewItem} from '../ReviewItem/ReviewItem';
+import {ReviewForm} from '../ReviewForm/ReviewForm'
 
 export const RestaurantView = ({ restaurant }) => {
   if (!restaurant) return <div>No restaurant data available</div>;
@@ -32,6 +33,11 @@ export const RestaurantView = ({ restaurant }) => {
         ) : (
           <p>No reviews yet</p>
         )}
+
+        <div className="review-form-add"> 
+          <ReviewForm/>
+        </div>
+        
       </section>
     </div>
   );
