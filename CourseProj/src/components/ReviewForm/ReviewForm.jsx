@@ -1,5 +1,7 @@
-import { ReviewCounter } from "../Counter/ReviewCounter";
-import { useReviewForm } from "./useReviewForm";
+import styles from './ReviewForm.module.css';
+import classNames from 'classnames';
+import { ReviewCounter } from '../Counter/ReviewCounter';
+import { useReviewForm } from './useReviewForm';
 
 export const ReviewForm = () => {
   const {
@@ -11,10 +13,10 @@ export const ReviewForm = () => {
   } = useReviewForm();
 
   return (
-    <div className="review-form">
+    <div className={classNames(styles.reviewForm)}>
       <h2>Leave a review</h2>
 
-      <div className="form-group">
+      <div className={classNames(styles.formGroup)}>
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -25,7 +27,7 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <div className="form-group">
+      <div className={classNames(styles.formGroup)}>
         <label>Rating:</label>
         <ReviewCounter
           rating={formState.rating}
@@ -34,7 +36,7 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <div className="form-group">
+      <div className={classNames(styles.formGroup)}>
         <label htmlFor="text">Review:</label>
         <textarea
           id="text"
@@ -45,8 +47,12 @@ export const ReviewForm = () => {
         />
       </div>
 
-      <div className="form-actions">
-        <button type="button" onClick={handleClear} className="clear-button">
+      <div className={classNames(styles.formActions)}>
+        <button
+          type="button"
+          onClick={handleClear}
+          className={classNames(styles.clearButton)}
+        >
           Clear
         </button>
       </div>

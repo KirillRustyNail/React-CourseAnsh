@@ -1,3 +1,6 @@
+import React from 'react';
+import styles from './Ingredients.module.css';
+import classNames from 'classnames';
 import { INGREDIENT_ICONS } from '../../constants/IngredientsIcons';
 
 export const Ingredients = ({ items }) => {
@@ -6,11 +9,11 @@ export const Ingredients = ({ items }) => {
   }
 
   return (
-    <div className="ingredients">
-      <span className="ingredients-label">Ingredients: </span>
-      <div className="ingredients-list">
+    <div className={styles.ingredients}>
+      <span className={styles.ingredientsLabel}>Ingredients: </span>
+      <div className={styles.ingredientsList}>
         {items.map((ingredient, index) => (
-          <span key={index} className="ingredient-item">
+          <span key={index} className={styles.ingredientItem}>
             {INGREDIENT_ICONS[ingredient] || '🍴'} {ingredient}
             {index < items.length - 1 && ', '}
           </span>
@@ -18,4 +21,4 @@ export const Ingredients = ({ items }) => {
       </div>
     </div>
   );
-}
+};

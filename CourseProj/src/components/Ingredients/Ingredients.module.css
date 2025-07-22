@@ -1,0 +1,20 @@
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.ingredientsLabel {
+  font-weight: bold;
+}
+
+.ingredientsList {
+  display: inline;
+}
+
+.ingredientItem {
+  display: inline;
+}

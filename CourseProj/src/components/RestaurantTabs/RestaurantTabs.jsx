@@ -1,10 +1,15 @@
-export const  RestaurantTabs = ({ restaurants, activeId, onTabClick }) => {
+import styles from './RestaurantTabs.module.css';
+import classNames from 'classnames';
+
+export const RestaurantTabs = ({ restaurants, activeId, onTabClick }) => {
   return (
-    <div className="restaurant-tabs">
+    <div className={styles.restaurantTabs}>
       {restaurants.map(restaurant => (
         <button
           key={restaurant.id}
-          className={`tab ${restaurant.id === activeId ? 'active' : ''}`}
+          className={classNames(styles.tab, {
+            [styles.active]: restaurant.id === activeId
+          })}
           onClick={() => restaurant.id !== activeId && onTabClick(restaurant.id)}
           disabled={restaurant.id === activeId}
         >
@@ -13,5 +18,4 @@ export const  RestaurantTabs = ({ restaurants, activeId, onTabClick }) => {
       ))}
     </div>
   );
-}
-
+};
