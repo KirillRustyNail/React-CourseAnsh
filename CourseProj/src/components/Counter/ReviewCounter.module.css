@@ -11,10 +11,18 @@
 
 .star {
   cursor: default;
-  color: #e4e5e9;
+  color: #e4e5e9; 
   transition: color 0.3s;
 }
 
 .star.filled {
-  color: #ffc107;
+  color: #ffc107; 
+}
+
+.dark .star {
+  color: #555; 
+}
+
+.dark .star.filled {
+  color: #ffca28; 
 }

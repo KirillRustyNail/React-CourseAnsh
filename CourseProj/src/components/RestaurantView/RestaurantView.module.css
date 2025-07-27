@@ -1,6 +1,14 @@
 .restaurantView {
   max-width: 800px;
   margin: 0 auto;
+  background: #fff;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.restaurantView.dark {
+  background: #121212;
+  color: #eee;
 }
 
 .menuSection,

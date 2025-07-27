@@ -4,7 +4,16 @@
   align-items: center;
   gap: 4px;
   font-size: 0.9rem;
+  color: #555; 
+  transition: color 0.3s;
+}
+
+.ingredients.light {
   color: #555;
+}
+
+.ingredients.dark {
+  color: #ccc;
 }
 
 .ingredientsLabel {

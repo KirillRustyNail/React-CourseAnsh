@@ -4,6 +4,29 @@
   border-radius: 5px;
   background: white;
   margin-bottom: 30px;
+  color: #333;
+}
+
+.reviewForm.dark {
+  background-color: #222;
+  border-color: #555;
+  color: #eee;
+}
+
+.reviewForm.dark input,
+.reviewForm.dark textarea {
+  background-color: #333;
+  border: 1px solid #555;
+  color: #eee;
+}
+
+.reviewForm.dark input::placeholder,
+.reviewForm.dark textarea::placeholder {
+  color: #bbb;
+}
+
+.reviewForm.dark label {
+  color: #ddd;
 }
 
 .formGroup {
@@ -14,7 +37,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #333;
+  color: inherit;
 }
 
 .formGroup input,
@@ -25,6 +48,8 @@
   border-radius: 4px;
   font-family: inherit;
   font-size: 1rem;
+  background-color: inherit;
+  color: inherit;
 }
 
 .formGroup textarea {
@@ -50,4 +75,13 @@
 
 .clearButton:hover {
   background-color: #d32f2f;
+}
+
+
+.reviewForm.dark .clearButton {
+  background-color: #b33939;
+}
+
+.reviewForm.dark .clearButton:hover {
+  background-color: #8c2a2a;
 }

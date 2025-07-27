@@ -1,14 +1,20 @@
+import { useTheme } from '../ThemeContextProvider/useTheme';
 import styles from './Counter.module.css';
 import classNames from 'classnames';
 
 export const Counter = ({ value, onIncrement, onDecrement, min, max }) => {
+  const { theme } = useTheme();
+
   return (
-    <div className={styles.counter}>
+    <div className={classNames(styles.counter, {
+      [styles.light]: theme === 'light',
+      [styles.dark]: theme === 'dark',
+    })}>
       <button
         onClick={onDecrement}
         disabled={value === min}
         aria-label="Decrease"
-        className={classNames(styles.counterButton)}
+        className={styles.counterButton}
       >
         -
       </button>
@@ -19,7 +25,7 @@ export const Counter = ({ value, onIncrement, onDecrement, min, max }) => {
         onClick={onIncrement}
         disabled={value === max}
         aria-label="Increase"
-        className={classNames(styles.counterButton)}
+        className={styles.counterButton}
       >
         +
       </button>

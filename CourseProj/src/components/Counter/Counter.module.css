@@ -15,6 +15,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .counterButton:disabled {
@@ -22,7 +23,26 @@
   cursor: not-allowed;
 }
 
+
+.counter.light .counterButton {
+  background: #f5f5f5;
+  border-color: #ddd;
+  color: #222;
+}
+
+.counter.dark .counterButton {
+  background: #444;
+  border-color: #666;
+  color: #eee;
+}
+
 .counterValue {
   min-width: 20px;
   text-align: center;
+  color: #222;
+  transition: color 0.3s;
+}
+
+.counter.dark .counterValue {
+  color: #eee;
 }

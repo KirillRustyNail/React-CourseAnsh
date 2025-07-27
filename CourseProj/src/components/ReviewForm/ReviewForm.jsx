@@ -1,9 +1,12 @@
-import styles from './ReviewForm.module.css';
-import classNames from 'classnames';
-import { ReviewCounter } from '../Counter/ReviewCounter';
-import { useReviewForm } from './useReviewForm';
+import styles from "./ReviewForm.module.css";
+import classNames from "classnames";
+import { ReviewCounter } from "../Counter/ReviewCounter";
+import { useReviewForm } from "./useReviewForm";
+import { useTheme } from "../ThemeContextProvider/useTheme";
 
 export const ReviewForm = () => {
+  const { theme } = useTheme();
+
   const {
     formState,
     handleChange,
@@ -13,7 +16,12 @@ export const ReviewForm = () => {
   } = useReviewForm();
 
   return (
-    <div className={classNames(styles.reviewForm)}>
+    <div
+      className={classNames(styles.reviewForm, {
+        [styles.light]: theme === "light",
+        [styles.dark]: theme === "dark",
+      })}
+    >
       <h2>Leave a review</h2>
 
       <div className={classNames(styles.formGroup)}>
