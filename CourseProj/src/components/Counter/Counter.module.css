@@ -4,7 +4,7 @@
   gap: 10px;
 }
 
-.counter button {
+.counterButton {
   width: 30px;
   height: 30px;
   border: 1px solid #ddd;
@@ -17,12 +17,12 @@
   border-radius: 4px;
 }
 
-.counter button:disabled {
+.counterButton:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.counter-value {
+.counterValue {
   min-width: 20px;
   text-align: center;
 }

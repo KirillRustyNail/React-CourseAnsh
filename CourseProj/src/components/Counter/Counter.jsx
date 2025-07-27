@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Counter.module.css';
 import classNames from 'classnames';
 
@@ -9,18 +8,18 @@ export const Counter = ({ value, onIncrement, onDecrement, min, max }) => {
         onClick={onDecrement}
         disabled={value === min}
         aria-label="Decrease"
-        className={classNames({ [styles.disabled]: value === min })}
+        className={classNames(styles.counterButton)}
       >
         -
       </button>
 
-      <span className={styles['counter-value']}>{value}</span>
+      <span className={styles.counterValue}>{value}</span>
 
       <button
         onClick={onIncrement}
         disabled={value === max}
         aria-label="Increase"
-        className={classNames({ [styles.disabled]: value === max })}
+        className={classNames(styles.counterButton)}
       >
         +
       </button>
