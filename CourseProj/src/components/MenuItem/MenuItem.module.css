@@ -6,6 +6,18 @@
   border: 1px solid #ddd;
   border-radius: 5px;
   gap: 15px;
+  background-color: #fff;
+  color: #000;
+  transition: background 0.3s;
+
+}
+
+.menuItem.dark {
+  background-color: #222;
+  border-color: #444;
+  color: #eee;
+  transition: background 0.3s;
+
 }
 
 .itemEmoji {

@@ -2,6 +2,15 @@
   padding: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  background-color: white;
+  color: #333;
+}
+
+/* Тёмная тема */
+.reviewItem.dark {
+  background-color: #222;
+  border-color: #555;
+  color: #eee;
 }
 
 .reviewHeader {
@@ -15,10 +24,18 @@
   color: #333;
 }
 
+.reviewItem.dark .user {
+  color: #ddd;
+}
+
 .rating {
   color: gold;
 }
 
 .reviewText {
   margin: 0;
+}
+
+.reviewItem.dark .reviewText {
+  color: #ccc;
 }

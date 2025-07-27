@@ -1,21 +1,31 @@
-import styles from './RestaurantView.module.css';
-import classNames from 'classnames';
-import { MenuItem } from '../MenuItem/MenuItem';
-import { ReviewItem } from '../ReviewItem/ReviewItem';
-import { ReviewForm } from '../ReviewForm/ReviewForm';
+import styles from "./RestaurantView.module.css";
+import classNames from "classnames";
+import { MenuItem } from "../MenuItem/MenuItem";
+import { ReviewItem } from "../ReviewItem/ReviewItem";
+import { ReviewForm } from "../ReviewForm/ReviewForm";
+import { useTheme } from "../ThemeContextProvider/useTheme";
+import { useUser } from "../UserContextProvider/useUser";
 
 export const RestaurantView = ({ restaurant }) => {
+  const { theme } = useTheme();
+  const { userName } = useUser();
+
   if (!restaurant) return <div>No restaurant data available</div>;
 
   return (
-    <div className={classNames(styles.restaurantView)}>
+    <div
+      className={classNames(styles.restaurantView, {
+        [styles.dark]: theme === "dark",
+        [styles.light]: theme === "light",
+      })}
+    >
       <h2>{restaurant.name}</h2>
 
-      <section className={classNames(styles.menuSection)}>
+      <section className={styles.menuSection}>
         <h3>Menu</h3>
         {restaurant.menu?.length ? (
-          <div className={classNames(styles.menuItems)}>
-            {restaurant.menu.map(item => (
+          <div className={styles.menuItems}>
+            {restaurant.menu.map((item) => (
               <MenuItem key={item.id} item={item} />
             ))}
           </div>
@@ -24,11 +34,11 @@ export const RestaurantView = ({ restaurant }) => {
         )}
       </section>
 
-      <section className={classNames(styles.reviewsSection)}>
+      <section className={styles.reviewsSection}>
         <h3>Reviews</h3>
         {restaurant.reviews?.length ? (
-          <div className={classNames(styles.reviews)}>
-            {restaurant.reviews.map(review => (
+          <div className={styles.reviews}>
+            {restaurant.reviews.map((review) => (
               <ReviewItem key={review.id} review={review} />
             ))}
           </div>
@@ -36,9 +46,11 @@ export const RestaurantView = ({ restaurant }) => {
           <p>No reviews yet</p>
         )}
 
-        <div className={classNames(styles.reviewFormAdd)}>
-          <ReviewForm />
-        </div>
+        {userName && (
+          <div className={styles.reviewFormAdd}>
+            <ReviewForm />
+          </div>
+        )}
       </section>
     </div>
   );
