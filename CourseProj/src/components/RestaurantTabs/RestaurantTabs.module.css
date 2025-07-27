@@ -1,0 +1,20 @@
+.restaurantTabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f5f5f5;
+}
+
+.tab {
+  padding: 8px 16px;
+  background: #ddd;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.active {
+  background: #007bff;
+  color: white;
+}

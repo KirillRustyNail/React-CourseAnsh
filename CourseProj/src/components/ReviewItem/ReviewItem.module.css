@@ -1,0 +1,24 @@
+.reviewItem {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.user {
+  font-weight: bold;
+  color: #333;
+}
+
+.rating {
+  color: gold;
+}
+
+.reviewText {
+  margin: 0;
+}

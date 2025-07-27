@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import styles from './ScrollProgressBar.module.css';
+import classNames from 'classnames';
 
 export const ScrollProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -10,17 +12,15 @@ export const ScrollProgressBar = () => {
       setScrollProgress(progress);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <div className="scroll-progress-wrapper">
-      <div 
-        className="scroll-progress-bar"
+    <div className={classNames(styles.scrollProgressWrapper)}>
+      <div
+        className={classNames(styles.scrollProgressBar)}
         style={{ '--progress': `${scrollProgress}%` }}
       />
     </div>

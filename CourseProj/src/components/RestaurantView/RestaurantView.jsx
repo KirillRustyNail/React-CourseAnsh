@@ -1,18 +1,20 @@
-import {MenuItem} from '../MenuItem/MenuItem';
-import {ReviewItem} from '../ReviewItem/ReviewItem';
-import {ReviewForm} from '../ReviewForm/ReviewForm'
+import styles from './RestaurantView.module.css';
+import classNames from 'classnames';
+import { MenuItem } from '../MenuItem/MenuItem';
+import { ReviewItem } from '../ReviewItem/ReviewItem';
+import { ReviewForm } from '../ReviewForm/ReviewForm';
 
 export const RestaurantView = ({ restaurant }) => {
   if (!restaurant) return <div>No restaurant data available</div>;
 
   return (
-    <div className="restaurant-view">
+    <div className={classNames(styles.restaurantView)}>
       <h2>{restaurant.name}</h2>
-      
-      <section className="menu-section">
+
+      <section className={classNames(styles.menuSection)}>
         <h3>Menu</h3>
         {restaurant.menu?.length ? (
-          <div className="menu-items">
+          <div className={classNames(styles.menuItems)}>
             {restaurant.menu.map(item => (
               <MenuItem key={item.id} item={item} />
             ))}
@@ -21,11 +23,11 @@ export const RestaurantView = ({ restaurant }) => {
           <p>No menu items available</p>
         )}
       </section>
-      
-      <section className="reviews-section">
+
+      <section className={classNames(styles.reviewsSection)}>
         <h3>Reviews</h3>
         {restaurant.reviews?.length ? (
-          <div className="reviews">
+          <div className={classNames(styles.reviews)}>
             {restaurant.reviews.map(review => (
               <ReviewItem key={review.id} review={review} />
             ))}
@@ -34,11 +36,10 @@ export const RestaurantView = ({ restaurant }) => {
           <p>No reviews yet</p>
         )}
 
-        <div className="review-form-add"> 
-          <ReviewForm/>
+        <div className={classNames(styles.reviewFormAdd)}>
+          <ReviewForm />
         </div>
-        
       </section>
     </div>
   );
-}
+};
