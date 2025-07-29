@@ -18,8 +18,6 @@ export const Cart = () => {
   const { theme } = useTheme();
   const { userName } = useUser();
 
-  const prevUserNameRef = useRef(userName);
-
   const itemIds = useSelector(selectCartItemIds);
 
   const isCartVisible = isHovered || isPinned;
@@ -56,15 +54,11 @@ export const Cart = () => {
   }, [isPinned]);
 
   useEffect(() => {
-    const previousUserName = prevUserNameRef.current;
-
-    if (previousUserName !== null && userName === null) {
+    if (userName === null) {
       dispatch(clearCart());
       setIsPinned(false);
       setIsHovered(false);
     }
-
-    prevUserNameRef.current = userName;
   }, [userName, dispatch]);
 
   return (
@@ -90,11 +84,11 @@ export const Cart = () => {
           })}
         >
           <h3 className={styles.title}>Your Cart</h3>
-          {!userName ? (
+          {userName === null ? (
             <div className={classNames(styles.empty, styles.loginRequired)}>
               Please log in to view your cart.
             </div>
-          ) : itemIds.length > 0 ? (
+          ) : itemIds.length > 1 ? (
             <div className={styles.list}>
               {itemIds.map((id) => (
                 <ImportedCartItem key={id} id={id} />
