@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
-import { Counter } from './Counter'; 
+import { Counter } from './Counter';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../../redux/entities/cart/slice';
 
-
-export const DishCounter = ({ initialCount = 1 , min=0 , max=5}) => {
-  const [count, setCount] = useState(initialCount); 
+export const DishCounter = ({ dishId, min = 0, max = 5 }) => {
+  const dispatch = useDispatch();
   
+  const countInCart = useSelector(state => state.cart[dishId] || 0);
+
   const handleIncrement = () => {
-    setCount(prev => Math.min(prev + 1, max));
+    if (countInCart < max) {
+      dispatch(addToCart(dishId));
+    }
   };
 
   const handleDecrement = () => {
-    setCount(prev => Math.max(prev - 1, min));
+    if (countInCart > min) {
+      dispatch(removeFromCart(dishId));
+    }
   };
 
   return (
-    <Counter 
-        value={count}
-        onIncrement={handleIncrement}
-        onDecrement={handleDecrement}
-        min={min}
-        max={max}
+    <Counter
+      value={countInCart}
+      onIncrement={handleIncrement}
+      onDecrement={handleDecrement}
+      min={min}
+      max={max}
     />
   );
 };

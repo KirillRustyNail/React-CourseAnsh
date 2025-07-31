@@ -1,8 +1,9 @@
-import styles from './RestaurantTabs.module.css';
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContextProvider/useTheme';
+import styles from './RestaurantTabs.module.css';
+import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
-export const RestaurantTabs = ({ restaurants, activeId, onTabClick }) => {
+export const RestaurantTabs = ({ restaurantIds, activeId, onTabClick }) => {
   const { theme } = useTheme();
 
   return (
@@ -11,18 +12,13 @@ export const RestaurantTabs = ({ restaurants, activeId, onTabClick }) => {
         [styles.dark]: theme === 'dark',
       })}
     >
-      {restaurants.map((restaurant) => (
-        <button
-          key={restaurant.id}
-          className={classNames(styles.tab, {
-            [styles.active]: restaurant.id === activeId,
-            [styles.dark]: theme === 'dark',
-          })}
-          onClick={() => restaurant.id !== activeId && onTabClick(restaurant.id)}
-          disabled={restaurant.id === activeId}
-        >
-          {restaurant.name}
-        </button>
+      {restaurantIds.map((id) => (
+        <RestaurantTab
+          key={id}
+          id={id}
+          activeId={activeId}
+          onTabClick={onTabClick}
+        />
       ))}
     </div>
   );

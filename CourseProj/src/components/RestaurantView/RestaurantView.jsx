@@ -5,12 +5,20 @@ import { ReviewItem } from "../ReviewItem/ReviewItem";
 import { ReviewForm } from "../ReviewForm/ReviewForm";
 import { useTheme } from "../ThemeContextProvider/useTheme";
 import { useUser } from "../UserContextProvider/useUser";
+import { useSelector } from "react-redux";
 
-export const RestaurantView = ({ restaurant }) => {
+import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
+
+export const RestaurantView = ({ id }) => {
   const { theme } = useTheme();
   const { userName } = useUser();
 
+  const restaurant = useSelector((state) => selectRestaurantById(state, id));
+
   if (!restaurant) return <div>No restaurant data available</div>;
+
+  const dishIds = restaurant.menu || [];
+  const reviewIds = restaurant.reviews || [];
 
   return (
     <div
@@ -23,10 +31,10 @@ export const RestaurantView = ({ restaurant }) => {
 
       <section className={styles.menuSection}>
         <h3>Menu</h3>
-        {restaurant.menu?.length ? (
+        {dishIds.length ? (
           <div className={styles.menuItems}>
-            {restaurant.menu.map((item) => (
-              <MenuItem key={item.id} item={item} />
+            {dishIds.map((dishId) => (
+              <MenuItem key={dishId} id={dishId} />
             ))}
           </div>
         ) : (
@@ -36,10 +44,10 @@ export const RestaurantView = ({ restaurant }) => {
 
       <section className={styles.reviewsSection}>
         <h3>Reviews</h3>
-        {restaurant.reviews?.length ? (
+        {reviewIds.length ? (
           <div className={styles.reviews}>
-            {restaurant.reviews.map((review) => (
-              <ReviewItem key={review.id} review={review} />
+            {reviewIds.map((reviewId) => (
+              <ReviewItem key={reviewId} reviewId={reviewId} />
             ))}
           </div>
         ) : (
@@ -48,7 +56,7 @@ export const RestaurantView = ({ restaurant }) => {
 
         {userName && (
           <div className={styles.reviewFormAdd}>
-            <ReviewForm />
+            <ReviewForm restaurantId={restaurant.id} />
           </div>
         )}
       </section>

@@ -1,0 +1,32 @@
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.price {
+  font-size: 0.9rem;
+}
+
+
+.light {
+  background-color: transparent;
+  color: #000;
+}
+
+.dark {
+  background-color: transparent;
+  color: #fff;
+}

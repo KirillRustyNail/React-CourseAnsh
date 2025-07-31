@@ -1,25 +1,22 @@
 import { useState } from 'react';
-import { restaurants } from '../../constants/mock.js';
-import {RestaurantTabs} from '../RestaurantTabs/RestaurantTabs';
-import {RestaurantView} from '../RestaurantView/RestaurantView';
+import { useSelector } from 'react-redux';
+
+import { selectRestaurantsIds, selectRestaurantById } from '../../redux/entities/restaurants/slice';
+import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
+import { RestaurantView } from '../RestaurantView/RestaurantView';
 
 export const RestaurantPage = () => {
-  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0].id);
-
-  const activeRestaurant = restaurants.find(r => r.id === activeRestaurantId) || null;
+  const restaurantIds = useSelector(selectRestaurantsIds);
+  const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantIds[0]);
 
   return (
     <div>
-      <RestaurantTabs 
-        restaurants={restaurants} 
+      <RestaurantTabs
+        restaurantIds={restaurantIds}
         activeId={activeRestaurantId}
         onTabClick={setActiveRestaurantId}
       />
-      {activeRestaurant ? (
-        <RestaurantView restaurant={activeRestaurant} />
-      ) : (
-        <div>No restaurant selected</div>
-      )}
+      <RestaurantView id={activeRestaurantId} />
     </div>
   );
-}
+};
