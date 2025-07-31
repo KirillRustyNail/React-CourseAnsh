@@ -88,7 +88,7 @@ export const Cart = () => {
             <div className={classNames(styles.empty, styles.loginRequired)}>
               Please log in to view your cart.
             </div>
-          ) : itemIds.length > 1 ? (
+          ) : itemIds.length > 0 ? (
             <div className={styles.list}>
               {itemIds.map((id) => (
                 <ImportedCartItem key={id} id={id} />

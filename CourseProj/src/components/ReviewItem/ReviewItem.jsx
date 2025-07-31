@@ -23,8 +23,8 @@ export const ReviewItem = ({ reviewId }) => {
       })}
     >
       <div className={classNames(styles.reviewHeader)}>
-        <span className={classNames(styles.user)}>{reviewUser.name}</span>
-        <span className={classNames(styles.rating)}>
+        <span className={styles.user}>{reviewUser.name}</span>
+        <span className={styles.rating}>
           {"★".repeat(review.rating)}
         </span>
       </div>

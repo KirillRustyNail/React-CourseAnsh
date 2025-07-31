@@ -6,12 +6,8 @@ import { RestaurantTabs } from '../RestaurantTabs/RestaurantTabs';
 import { RestaurantView } from '../RestaurantView/RestaurantView';
 
 export const RestaurantPage = () => {
-  const restaurantIds = useSelector((state) => selectRestaurantsIds(state));
+  const restaurantIds = useSelector(selectRestaurantsIds);
   const [activeRestaurantId, setActiveRestaurantId] = useState(restaurantIds[0]);
-
-  const activeRestaurant = useSelector((state) =>
-    selectRestaurantById(state, activeRestaurantId)
-  );
 
   return (
     <div>
@@ -20,11 +16,7 @@ export const RestaurantPage = () => {
         activeId={activeRestaurantId}
         onTabClick={setActiveRestaurantId}
       />
-      {activeRestaurant ? (
-        <RestaurantView id={activeRestaurantId} />
-      ) : (
-        <div>No restaurant selected</div>
-      )}
+      <RestaurantView id={activeRestaurantId} />
     </div>
   );
 };

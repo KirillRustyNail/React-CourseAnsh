@@ -1,8 +1,7 @@
-import styles from './RestaurantTabs.module.css';
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContextProvider/useTheme';
-import { useSelector } from 'react-redux';
-import { selectRestaurantById } from '../../redux/entities/restaurants/slice';
+import styles from './RestaurantTabs.module.css';
+import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
 export const RestaurantTabs = ({ restaurantIds, activeId, onTabClick }) => {
   const { theme } = useTheme();
@@ -13,25 +12,14 @@ export const RestaurantTabs = ({ restaurantIds, activeId, onTabClick }) => {
         [styles.dark]: theme === 'dark',
       })}
     >
-      {restaurantIds.map((id) => {
-        const restaurant = useSelector((state) => selectRestaurantById(state, id));
-        
-        if (!restaurant) return null; 
-
-        return (
-          <button
-            key={id}
-            className={classNames(styles.tab, {
-              [styles.active]: id === activeId,
-              [styles.dark]: theme === 'dark',
-            })}
-            onClick={() => id !== activeId && onTabClick(id)}
-            disabled={id === activeId}
-          >
-            {restaurant.name}
-          </button>
-        );
-      })}
+      {restaurantIds.map((id) => (
+        <RestaurantTab
+          key={id}
+          id={id}
+          activeId={activeId}
+          onTabClick={onTabClick}
+        />
+      ))}
     </div>
   );
 };
