@@ -1,24 +1,21 @@
 import styles from "./RestaurantView.module.css";
 import classNames from "classnames";
-import { MenuItem } from "../MenuItem/MenuItem";
-import { ReviewItem } from "../ReviewItem/ReviewItem";
-import { ReviewForm } from "../ReviewForm/ReviewForm";
 import { useTheme } from "../ThemeContextProvider/useTheme";
-import { useUser } from "../UserContextProvider/useUser";
 import { useSelector } from "react-redux";
-
+import { Outlet, useNavigate, useLocation} from "react-router";
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
 
 export const RestaurantView = ({ id }) => {
   const { theme } = useTheme();
-  const { userName } = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
 
   if (!restaurant) return <div>No restaurant data available</div>;
 
-  const dishIds = restaurant.menu || [];
-  const reviewIds = restaurant.reviews || [];
+  const isMenu = location.pathname.endsWith("/menu");
+  const isReviews = location.pathname.endsWith("/reviews");
 
   return (
     <div
@@ -29,37 +26,31 @@ export const RestaurantView = ({ id }) => {
     >
       <h2>{restaurant.name}</h2>
 
-      <section className={styles.menuSection}>
-        <h3>Menu</h3>
-        {dishIds.length ? (
-          <div className={styles.menuItems}>
-            {dishIds.map((dishId) => (
-              <MenuItem key={dishId} id={dishId} />
-            ))}
-          </div>
-        ) : (
-          <p>No menu items available</p>
-        )}
-      </section>
-
-      <section className={styles.reviewsSection}>
-        <h3>Reviews</h3>
-        {reviewIds.length ? (
-          <div className={styles.reviews}>
-            {reviewIds.map((reviewId) => (
-              <ReviewItem key={reviewId} reviewId={reviewId} />
-            ))}
-          </div>
-        ) : (
-          <p>No reviews yet</p>
-        )}
-
-        {userName && (
-          <div className={styles.reviewFormAdd}>
-            <ReviewForm restaurantId={restaurant.id} />
-          </div>
-        )}
-      </section>
+      <div className={styles.tabs}>
+        <button
+          onClick={() => navigate(`/restaurants/${id}/menu`)}
+          className={classNames(
+            styles.tab,
+            { [styles.dark]: theme === "dark" },
+            { [styles.active]: isMenu },
+            { [styles["active dark"]]: isMenu && theme === "dark" }
+          )}
+        >
+          Menu
+        </button>
+        <button
+          onClick={() => navigate(`/restaurants/${id}/reviews`)}
+          className={classNames(
+            styles.tab,
+            { [styles.dark]: theme === "dark" },
+            { [styles.active]: isReviews },
+            { [styles["active dark"]]: isReviews && theme === "dark" }
+          )}
+        >
+          Reviews
+        </button>
+      </div>
+      <Outlet />
     </div>
   );
 };

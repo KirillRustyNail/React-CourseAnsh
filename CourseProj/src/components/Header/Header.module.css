@@ -8,7 +8,6 @@
   position: relative;
 }
 
-
 .title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -27,3 +26,22 @@
   transform: translateY(-50%);
 }
 
+.homeButton {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 8px 18px;
+  font-size: 1rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.homeButton:hover {
+  background: #007bff;
+  color: #fff;
+}

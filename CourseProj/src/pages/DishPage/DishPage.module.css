@@ -1,0 +1,74 @@
+.dishPage {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+.dishPage.dark {
+  background: #181818;
+  color: #eee;
+}
+
+.dishContent {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  background: inherit;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 40px 48px;
+}
+
+.emojiBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemEmojiLarge {
+  font-size: 96px;
+  line-height: 1;
+  margin-right: 0;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.infoBlock {
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dishName {
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+}
+
+.dishPrice {
+  font-size: 1.2rem;
+  margin: 0 0 8px 0;
+}
+
+.counterBlock {
+  margin-top: 16px;
+}
+
+.backButton {
+  margin-top: 32px;
+  padding: 10px 24px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.backButton:hover {
+  background: #0056b3;
+}

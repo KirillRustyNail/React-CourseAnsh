@@ -1,0 +1,13 @@
+.reviewsSection {
+  margin-top: 30px;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.reviewFormAdd {
+  margin-top: 30px;
+}
