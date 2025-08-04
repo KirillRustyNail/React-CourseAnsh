@@ -21,9 +21,6 @@ export const cartSlice = createSlice({
     clearCart: () => ({}),
   },
   selectors: {
-    // selectCartItemIds: (state) => {
-    //   return Object.keys(state);
-    // },
     selectAmountByItemId: (state, id) => {
       return state[id];
     },

@@ -6,7 +6,7 @@ import { useTheme } from "../ThemeContextProvider/useTheme";
 import { Outlet } from "react-router";
 
 
-export const Layout = ({ children }) => {
+export const Layout = ({}) => {
   const { theme } = useTheme();
 
   return (
@@ -17,7 +17,7 @@ export const Layout = ({ children }) => {
       })}
     >
       <Header />
-      <main className={classNames(styles.content)}>{<Outlet />}</main>
+      <main className={styles.content}>{<Outlet />}</main>
       <Footer />
     </div>
   );

@@ -1,9 +1,7 @@
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import styles from "./HomePage.module.css";
 
 export const HomePage = () => {
-  const navigate = useNavigate();
-
   return (
     <div className={styles.homePage}>
       <h1 className={styles.title}>Welcome, netrunner!</h1>
@@ -22,12 +20,9 @@ export const HomePage = () => {
         glitches, or existential dread caused by our dishes.
         <br />
       </div>
-      <button
-        className={styles.button}
-        onClick={() => navigate("/restaurants")}
-      >
+      <Link to="/restaurants" className={styles.button}>
         Dive into the restaurants
-      </button>
+      </Link>
     </div>
   );
 };
