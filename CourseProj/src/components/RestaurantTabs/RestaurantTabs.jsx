@@ -1,9 +1,9 @@
+import styles from './RestaurantTabs.module.css';
 import classNames from 'classnames';
 import { useTheme } from '../ThemeContextProvider/useTheme';
-import styles from './RestaurantTabs.module.css';
 import { RestaurantTab } from '../RestaurantTab/RestaurantTab';
 
-export const RestaurantTabs = ({ restaurantIds, activeId, onTabClick }) => {
+export const RestaurantTabs = ({ restaurantIds }) => {
   const { theme } = useTheme();
 
   return (
@@ -13,12 +13,7 @@ export const RestaurantTabs = ({ restaurantIds, activeId, onTabClick }) => {
       })}
     >
       {restaurantIds.map((id) => (
-        <RestaurantTab
-          key={id}
-          id={id}
-          activeId={activeId}
-          onTabClick={onTabClick}
-        />
+        <RestaurantTab key={id} id={id} />
       ))}
     </div>
   );

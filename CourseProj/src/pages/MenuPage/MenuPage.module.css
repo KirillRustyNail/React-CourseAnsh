@@ -1,0 +1,9 @@
+.menuSection {
+  margin-top: 30px;
+}
+
+.menuItems{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

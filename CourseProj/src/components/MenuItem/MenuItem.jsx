@@ -7,6 +7,7 @@ import { FOOD_EMOJIS } from "../../constants/foodIcons";
 import { useTheme } from "../ThemeContextProvider/useTheme";
 import { useUser } from "../UserContextProvider/useUser";
 import { selectDishById } from "../../redux/entities/dishes/slice";
+import { Link } from "react-router";
 
 export const MenuItem = ({ id }) => {
   const dish = useSelector((state) => selectDishById(state, id));
@@ -21,12 +22,26 @@ export const MenuItem = ({ id }) => {
     ) % FOOD_EMOJIS.length;
   const foodEmoji = FOOD_EMOJIS[emojiIndex];
 
+  const handleClick = (e) => {
+    if (
+      e.target.closest("button") ||
+      e.target.closest("input") ||
+      e.target.closest("select") ||
+      e.target.closest("textarea")
+    ) {
+      e.preventDefault();
+    }
+  };
+
   return (
-    <div
+    <Link
+      to={`/dish/${dish.id}`}
       className={classNames(styles.menuItem, {
         [styles.light]: theme === "light",
         [styles.dark]: theme === "dark",
       })}
+      style={{ textDecoration: "none" }}
+      onClick={handleClick}
     >
       <div className={styles.itemEmoji}>{foodEmoji}</div>
       <div className={styles.itemInfo}>
@@ -35,6 +50,6 @@ export const MenuItem = ({ id }) => {
         <Ingredients items={dish.ingredients} />
       </div>
       {userName && <DishCounter dishId={dish.id} min={0} max={5} />}
-    </div>
+    </Link>
   );
 };

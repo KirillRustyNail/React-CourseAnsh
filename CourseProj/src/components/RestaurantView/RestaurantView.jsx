@@ -1,24 +1,15 @@
 import styles from "./RestaurantView.module.css";
 import classNames from "classnames";
-import { MenuItem } from "../MenuItem/MenuItem";
-import { ReviewItem } from "../ReviewItem/ReviewItem";
-import { ReviewForm } from "../ReviewForm/ReviewForm";
 import { useTheme } from "../ThemeContextProvider/useTheme";
-import { useUser } from "../UserContextProvider/useUser";
 import { useSelector } from "react-redux";
-
 import { selectRestaurantById } from "../../redux/entities/restaurants/slice";
+import { NavLink, Outlet } from "react-router";
 
 export const RestaurantView = ({ id }) => {
   const { theme } = useTheme();
-  const { userName } = useUser();
 
   const restaurant = useSelector((state) => selectRestaurantById(state, id));
-
-  if (!restaurant) return <div>No restaurant data available</div>;
-
-  const dishIds = restaurant.menu || [];
-  const reviewIds = restaurant.reviews || [];
+  if (!restaurant) return <div>Нет информации о ресторане</div>;
 
   return (
     <div
@@ -29,37 +20,32 @@ export const RestaurantView = ({ id }) => {
     >
       <h2>{restaurant.name}</h2>
 
-      <section className={styles.menuSection}>
-        <h3>Menu</h3>
-        {dishIds.length ? (
-          <div className={styles.menuItems}>
-            {dishIds.map((dishId) => (
-              <MenuItem key={dishId} id={dishId} />
-            ))}
-          </div>
-        ) : (
-          <p>No menu items available</p>
-        )}
-      </section>
+      <div className={styles.tabs}>
+        <NavLink
+          to={`/restaurants/${id}/menu`}
+          className={({ isActive }) =>
+            classNames(styles.tab, {
+              [styles.active]: isActive,
+              [styles.dark]: theme === "dark",
+            })
+          }
+        >
+          Меню
+        </NavLink>
+        <NavLink
+          to={`/restaurants/${id}/reviews`}
+          className={({ isActive }) =>
+            classNames(styles.tab, {
+              [styles.active]: isActive,
+              [styles.dark]: theme === "dark",
+            })
+          }
+        >
+          Отзывы
+        </NavLink>
+      </div>
 
-      <section className={styles.reviewsSection}>
-        <h3>Reviews</h3>
-        {reviewIds.length ? (
-          <div className={styles.reviews}>
-            {reviewIds.map((reviewId) => (
-              <ReviewItem key={reviewId} reviewId={reviewId} />
-            ))}
-          </div>
-        ) : (
-          <p>No reviews yet</p>
-        )}
-
-        {userName && (
-          <div className={styles.reviewFormAdd}>
-            <ReviewForm restaurantId={restaurant.id} />
-          </div>
-        )}
-      </section>
+      <Outlet />
     </div>
   );
 };

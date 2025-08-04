@@ -1,0 +1,56 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  background: transparent;
+  color: inherit;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+  color: #555;
+  text-align: left;
+}
+
+.text.dark {
+  color: #ccc;
+}
+
+.cyberText {
+  font-family: 'Share Tech Mono', 'Fira Mono', monospace;
+  color: inherit;
+  background: none;
+  padding: 18px 28px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  text-align: left; 
+  font-size: 1.08rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+
+.button {
+  margin-top: 20px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button:hover {
+  background: #007bff;
+  color: #fff;
+}
